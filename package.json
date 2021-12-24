@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "webpack ./src/index.ts --mode=development",
     "start": "webpack serve ./src/index.ts --mode=development --open",
-    "build": "webpack ./src/index.ts --mode=production"
+    "build": "webpack ./src/index.ts --mode=production",
+    "lint": "eslint . --ext .ts",
+    "lint:fix": "eslint . --ext .ts --fix"
   },
   "keywords": [],
   "author": "",
@@ -15,10 +17,14 @@
     "@babel/core": "^7.16.5",
     "@babel/preset-env": "^7.16.5",
     "@babel/preset-typescript": "^7.16.5",
+    "@typescript-eslint/eslint-plugin": "^5.8.0",
+    "@typescript-eslint/parser": "^5.8.0",
     "autoprefixer": "^10.4.0",
     "babel-loader": "^8.2.3",
     "core-js": "^3.20.0",
     "css-loader": "^6.5.1",
+    "eslint": "^8.5.0",
+    "eslint-webpack-plugin": "^3.1.1",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.5.0",
     "html-webpack-pug-plugin": "^4.0.0",
