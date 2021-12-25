@@ -1,10 +1,5 @@
-import { IAvatar, IComment, IUser } from './interfaces';
+import { IComment } from './interfaces'
 
-const getData = async (url: string) => {
-  const response = await fetch(url);
-  const data = await response.json();
-  return data;
-};
 
 const comment: IComment = {
   id: 1,
@@ -20,6 +15,7 @@ const comment: IComment = {
     username: 'amyrobson',
   },
   replies: [],
-};
+}
 
-console.log(comment);
+
+console.log(comment )

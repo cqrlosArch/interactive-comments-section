@@ -2,23 +2,22 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPugPlugin = require('html-webpack-pug-plugin');
-const ESLintPlugin = require('eslint-webpack-plugin');
 
 module.exports = {
   entry: './src/index.ts',
   output: {
     filename: 'js/[name].min.js',
     path: path.resolve(__dirname, 'dist'),
-    clean: true
+    clean: true,
   },
   target: 'web',
   devtool: 'inline-source-map',
   module: {
     rules: [
       {
-        test: /\.tsx?$/,
+        test: /\.(js|ts)?$/,
         loader: 'babel-loader',
-        exclude: /node_modules/
+        include: path.resolve(__dirname, 'src'),
       },
       {
         test: /\.(sa|sc|c)ss$/,
@@ -26,17 +25,17 @@ module.exports = {
           {
             loader: MiniCssExtractPlugin.loader,
             options: {
-              publicPath: '../'
-            }
+              publicPath: '../',
+            },
           },
           'css-loader',
           'postcss-loader',
-          'sass-loader'
-        ]
+          'sass-loader',
+        ],
       },
       {
         test: /\.pug$/i,
-        loader: 'pug-loader'
+        loader: 'pug-loader',
       },
       {
         test: /\.(png|jpe?g|gif|ico|svg)$/i,
@@ -46,42 +45,42 @@ module.exports = {
             options: {
               name: '[name].[ext]',
               outputPath: './assets/images',
-              useRelativePath: true
-            }
+              useRelativePath: true,
+            },
           },
           {
             loader: 'image-webpack-loader',
             options: {
               mozjpeg: {
-                progressive: true
+                progressive: true,
               },
               // optipng.enabled: false will disable optipng
               optipng: {
-                enabled: false
+                enabled: false,
               },
               pngquant: {
                 quality: [0.65, 0.9],
-                speed: 4
+                speed: 4,
               },
               gifsicle: {
-                interlaced: false
+                interlaced: false,
               },
               // the webp option will enable WEBP
               webp: {
-                quality: 75
-              }
-            }
-          }
-        ]
-      }
-    ]
+                quality: 75,
+              },
+            },
+          },
+        ],
+      },
+    ],
   },
   resolve: {
-    extensions: ['*', '.js', '.css', '.scss', '.pug', '.ts']
+    extensions: ['*', '.js', '.css', '.scss', '.pug', '.ts', 'json'],
   },
   devServer: {
     hot: false, // optional, but you must not set both hot and liveReload to true
-    liveReload: true
+    liveReload: true,
   },
   optimization: {
     nodeEnv: 'production',
@@ -92,24 +91,22 @@ module.exports = {
           name: 'vendors', // part of the bundle name and
           // can be used in chunks array of HtmlWebpackPlugin
           test: /[\\/](node_modules|vendors)[\\/]/,
-          chunks: 'all'
-        }
-      }
-    }
+          chunks: 'all',
+        },
+      },
+    },
   },
   plugins: [
     new MiniCssExtractPlugin({
       filename: 'css/styles.min.css',
-      chunkFilename: '[id].css'
+      chunkFilename: '[id].css',
     }),
 
     new HtmlWebpackPlugin({
       title: 'Mi site',
-      template: 'src/views/index.pug'
+      template: 'src/views/index.pug',
     }),
     new HtmlWebpackPugPlugin(),
-    new ESLintPlugin({
-      extensions: ['ts']
-    })
-  ]
+  
+  ],
 };
