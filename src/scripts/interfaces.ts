@@ -8,8 +8,8 @@ interface IComment {
 }
 
 interface IReply extends IComment {
-  replyingTo: IUser;
-  
+  replyingTo: string;
+
 }
 
 interface IUser {
@@ -22,4 +22,4 @@ interface IAvatar {
   webp: string;
 }
 
-export { IComment, IUser, IAvatar };
+export { IComment, IUser, IAvatar, IReply };
