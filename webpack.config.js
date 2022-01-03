@@ -1,7 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const HtmlWebpackPugPlugin = require('html-webpack-pug-plugin');
+const ESLintPlugin = require('eslint-webpack-plugin');
 
 module.exports = {
   entry: './src/index.ts',
@@ -34,17 +34,13 @@ module.exports = {
         ],
       },
       {
-        test: /\.pug$/i,
-        loader: 'pug-loader',
-      },
-      {
-        test: /\.(png|jpe?g|gif|ico|svg)$/i,
+        test: /\.(png|jpe?g|gif|ico|svg|webp)$/i,
         use: [
           {
             loader: 'file-loader',
             options: {
-              name: '[name].[ext]',
-              outputPath: './assets/images',
+              name: '[folder]/[name].[ext]',
+              outputPath: './images/',
               useRelativePath: true,
             },
           },
@@ -76,7 +72,8 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: ['*', '.js', '.css', '.scss', '.pug', '.ts', 'json'],
+    extensions: ['.js', '.jsx', '.ts', '.tsx', '.json', '.css', '.scss'],
+    modules: ['src', 'node_modules'], // Assuming that your files are inside the src dir
   },
   devServer: {
     hot: false, // optional, but you must not set both hot and liveReload to true
@@ -103,10 +100,12 @@ module.exports = {
     }),
 
     new HtmlWebpackPlugin({
-      title: 'Mi site',
-      template: 'src/views/index.pug',
+      title: 'Interactive Comments Section',
+      template: 'src/index.html',
     }),
-    new HtmlWebpackPugPlugin(),
-  
+    new ESLintPlugin({
+      quiet: true,
+      failOnError: true,
+    }),
   ],
 };

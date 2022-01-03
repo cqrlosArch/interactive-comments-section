@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="./images/favicons/apple-touch-icon180.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicons/favicon_32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="./images/favicons/favicon_16x16.png"
+    />
+    <link
+      rel="icon"
+      type="image/ico"
+      sizes="16x16"
+      href="./images/favicons/favicon.ico"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Interactive Comments Section</title>
+  </head>
+  <body>
+    <main>
+      <ul class="comments__list"></ul>
+      <template id="template-comment">
+        <article class="comment" data-id="" data-user="">
+          <div class="user">
+            <picture class="user__avatar">
+              <source type="image/png" srcset="" />
+              <source type="image/webp" srcset="" />
+              <img src="" alt="" />
+            </picture>
+            <h1 class="user__name"></h1>
+            <p class="user__date"></p>
+          </div>
+          <div class="comment__actions">
+            <div class="comment__reply">
+              <img src="./images/icons/icon-reply.svg" alt="reply" />
+            </div>
+            <div class="comment__delete">
+              <img src="./images/icons/icon-delete.svg" alt="delete" />
+            </div>
+            <div class="comment__edit">
+              <img src="./images/icons/icon-edit.svg" alt="edit" />
+            </div>
+          </div>
+          <div class="score">
+            <button class="score__plus">
+              <img src="./images/icons/icon-plus.svg" alt="plus" />
+            </button>
+            <p class="score_votes"></p>
+            <button class="score__minus">
+              <img src="./images/icons/icon-minus.svg" alt="minus" />
+            </button>
+          </div>
+        </article>
+      </template>
+    </main>
+  </body>
+</html>
