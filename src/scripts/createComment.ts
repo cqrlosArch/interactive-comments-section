@@ -22,6 +22,7 @@ const createComment = (c: IComment) => {
 const createReply = (r: IReply[]) => {
   const templateComment = <HTMLTemplateElement>document.getElementById('template-comment');
   const listReplies = document.createElement('ul')
+  listReplies.classList.add('list__replies')
   r.forEach(reply => {
     const liRreply = document.createElement('li')
     const clone = document.importNode(templateComment.content, true);
@@ -33,7 +34,7 @@ const createReply = (r: IReply[]) => {
     clone.querySelector('.user__name').textContent = reply.user.username
     clone.querySelector('.user__date').textContent = reply.createdAt
 
-    clone.querySelector('.user__comment').innerHTML = `<span>@${reply.replyingTo}</span> ${reply.content}`
+    clone.querySelector('.user__comment').innerHTML = `<span class="user__replyingto">@${reply.replyingTo}</span> ${reply.content}`
     clone.querySelector('.score_votes').textContent = reply.score.toString()
     liRreply.appendChild(clone)
     listReplies.appendChild(liRreply)
