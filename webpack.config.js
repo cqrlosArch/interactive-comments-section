@@ -1,7 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const ESLintPlugin = require('eslint-webpack-plugin');
 
 module.exports = {
   entry: './src/index.ts',
@@ -102,10 +101,6 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: 'Interactive Comments Section',
       template: 'src/index.html',
-    }),
-    new ESLintPlugin({
-      quiet: true,
-      failOnError: true,
     }),
   ],
 };

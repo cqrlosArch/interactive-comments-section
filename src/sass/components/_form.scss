@@ -1,0 +1,38 @@
+.form {
+  background-color: #fff;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  align-items: center;
+  justify-content: flex-start;
+
+
+  &__textarea {
+    appearance: none;
+    resize: none;
+    border: 1px solid var(--light-gray);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    grid-column: 1/-1;
+    margin-bottom: 1rem;
+  }
+  &__avatar {
+    grid-column: 1/2;
+
+    & img {
+      width:35px;
+    }
+  }
+  &__submit {
+    grid-column: 3/-1;
+    appearance: none;
+    border: none;
+
+    background-color: var(--moderate-blue);
+    color: var(--white);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+  }
+}

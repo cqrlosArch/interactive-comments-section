@@ -1,6 +1,5 @@
-import init from "./createComment"
-
+import init from './createComment';
 
 document.addEventListener('DOMContentLoaded', () => {
-  init()
-})
+  init();
+});
