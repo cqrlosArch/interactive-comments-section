@@ -1,4 +1,4 @@
-import init from './createComment';
+import init from './init';
 
 document.addEventListener('DOMContentLoaded', () => {
   init();

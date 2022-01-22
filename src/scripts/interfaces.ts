@@ -1,7 +1,7 @@
 interface IComment {
   id: number;
   content: string;
-  createdAt: string;
+  createdAt: string | Date;
   score: number;
   user: IUser;
   replies?: IReply[];
