@@ -1,6 +1,6 @@
 import {IComment, IUser} from './interfaces'
 import {currentUser} from './createComment'
-import  {setLocalStorage, getLocalStorage} from './storage'
+import  {setLocalStorage, getLocalStorage,addLocalStorage} from './storage'
 import { reloadComments } from './init'
 
 
@@ -22,9 +22,9 @@ const commentDefault:IComment = {
 }
 
 const newComment=(e:any)=>{
-  e.preventDefault();
   const newComment = {...commentDefault,content:e.target.elements.comment.value}
-  setLocalStorage('comments',[...getLocalStorage('comments'),newComment])
+  e.target.reset()
+  addLocalStorage('comments',newComment)
   reloadComments(getLocalStorage('comments'))
 }
 

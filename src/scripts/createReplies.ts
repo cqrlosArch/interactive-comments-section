@@ -5,9 +5,7 @@ const createReplies = (r: IReply[]) => {
   const listReplies = document.createElement('ul');
   listReplies.classList.add('list__replies');
   r.forEach((reply) => {
-   
     const clone = createComment(reply);
-  
     listReplies.appendChild(clone);
   });
 
