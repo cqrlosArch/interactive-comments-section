@@ -20,10 +20,19 @@ export function clearLocalStorage() {
 
 //Update item localStorage
 export function updateLocalStorage(key: string, value: any) {
-  const data = getLocalStorage(key);
-  data.push(value);
-  setLocalStorage(key, data);
+  const dataStorage = getLocalStorage(key);
+  const newDataStorage = dataStorage.map((item: any) => {
+    if (item.id === value.id) {
+      return value;
+    } else {
+      return item;
+    }
+  });
+  setLocalStorage(key, newDataStorage);
 }
+
+
+
 
 //Add new item localStorage
 export function addLocalStorage(key: string, value: any) {

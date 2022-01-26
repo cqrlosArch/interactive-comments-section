@@ -3,7 +3,7 @@ import data from '../assets/data.json';
 
 export let currentUser = data.currentUser;
 
-export default function createForm(label='send') {
+export default function createForm(label='send', className:string) {
   const templateForm = <HTMLTemplateElement>(
     document.getElementById('template-form')
   );
@@ -17,6 +17,7 @@ export default function createForm(label='send') {
   sourceWEBP.setAttribute('srcset', currentUser.image.webp)
   img.setAttribute('src', currentUser.image.png)
   img.setAttribute('alt', currentUser.username)
+  clone.querySelector('.form').classList.add(className)
   clone.querySelector('.form__avatar').appendChild(sourcePNG)
   clone.querySelector('.form__avatar').appendChild(sourceWEBP)
   clone.querySelector('.form__avatar').appendChild(img)
