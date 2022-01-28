@@ -6,10 +6,8 @@ import { reloadComments } from './init'
 
 const ID =()=>Math.floor(Math.random() * 36 ** 9)
 
+// crypto.randomUUID()
 
-
-
-//function format date to string example: "1 month ago"
 
 
 const commentDefault:IComment = {

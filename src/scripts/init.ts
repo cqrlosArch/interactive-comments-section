@@ -8,6 +8,7 @@ import createComment from './createComment'
 import createReplies from './createReplies'
 import createForm from './createForm';
 import newReply from './newReply';
+import changeScore from './changeScore';
 
 
 const init = () => {
@@ -43,16 +44,21 @@ export const reloadComments = (dataStorage: any) => {
 
 list.addEventListener('click', (e) => {
   const target = e.target as Element;
-  if (target.classList.contains('img__plus')) {
-    //TODO score actions
+  if (target.closest('.score')) {
+    if(target.classList.contains('img__minus')){
+      changeScore(e)
+    }
+    if(target.classList.contains('img__plus')){ 
+      changeScore(e)
+    }
   }
 
-  //TODO replyForm
   if (target.parentElement.classList.contains('actions__button--reply')) {
     const form = createForm('reply','form--reply');
     target.closest('.comment__item').appendChild(form)
   }
 })
+
 
 document.body.addEventListener('submit', e => {
  e.preventDefault()
